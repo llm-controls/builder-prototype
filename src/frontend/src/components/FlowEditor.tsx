@@ -136,6 +136,19 @@ const FlowEditor: React.FC = () => {
       // Find the input node to get the input value
       const inputNode = nodes.find((node) => node.type === 'chatInput');
       const inputValue = inputNode?.data?.inputValue || 'Hello';
+      
+      // Log nodes for debugging
+      console.log('All nodes before running flow:', nodes);
+      
+      // Explicitly get the API key from the LLM node
+      const llmNode = nodes.find((node) => node.type === 'llm');
+      console.log('LLM node data:', llmNode?.data);
+      
+      if (llmNode && llmNode.data.api_key) {
+        console.log('Found API key in LLM node:', llmNode.data.api_key.slice(0, 3) + '...');
+      } else {
+        console.warn('No API key found in LLM node!');
+      }
 
       const result = await runFlow(inputValue);
       setOutput(result);

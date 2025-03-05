@@ -36,6 +36,10 @@ const LLMNode: React.FC<NodeProps<LLMNodeData>> = ({ data, id, isConnectable }) 
   
   const handleApiKeyChange = (newKey: string) => {
     setApiKey(newKey);
+    // Log the update to debug
+    console.log('Updating API key:', newKey);
+    
+    // Make sure it's saved with the exact key name expected by the backend
     updateNodeData(id, {
       ...data,
       api_key: newKey,
@@ -44,14 +48,17 @@ const LLMNode: React.FC<NodeProps<LLMNodeData>> = ({ data, id, isConnectable }) 
   
   // Initialize data if needed (only once)
   useEffect(() => {
-    if (data.model_name === undefined || data.temperature === undefined) {
-      updateNodeData(id, {
-        ...data,
-        model_name: model,
-        temperature: temperature,
-        api_key: apiKey,
-      });
-    }
+    console.log('LLM Node initial data:', data);
+    
+    // Always set the API key and other values on mount to ensure they're in the node data
+    updateNodeData(id, {
+      ...data,
+      model_name: model,
+      temperature: temperature,
+      api_key: apiKey,
+    });
+    
+    console.log('Initialized LLM Node data with API key:', apiKey);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   

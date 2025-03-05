@@ -50,7 +50,8 @@ const PromptNode: React.FC<NodeProps<PromptNodeData>> = ({ data, id, isConnectab
           placeholder="Enter prompt template..."
         />
         <div className="text-xs text-gray-500 mt-1">
-          Use {'{input}'} to reference user input
+          <p>Use {'{'+'input'+'}'} to replace with user input (example: "Explain {'{'+'input'+'}'} simply")</p>
+          <p>OR create a system prompt without {'{'+'input'+'}'} (example: "Answer as Donald Trump")</p>
         </div>
       </div>
       

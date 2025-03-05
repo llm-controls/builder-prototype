@@ -184,8 +184,22 @@ export const useFlowStore = create<FlowState>((set, get) => ({
         throw new Error('No flow selected');
       }
       
+      // Make sure we're using the current nodes from the state
+      const currentNodes = get().nodes;
+      
+      // Create updated flow with current nodes
+      const updatedFlow = {
+        ...currentFlow,
+        nodes: currentNodes
+      };
+      
+      console.log('Running flow with nodes:', currentNodes);
+      
+      // Save the updated flow with current node data
+      const savedFlow = await api.updateFlow(updatedFlow.id, updatedFlow);
+      
       const response = await api.runFlow({
-        flowId: currentFlow.id,
+        flowId: savedFlow.id,
         inputs: { input },
       });
       
