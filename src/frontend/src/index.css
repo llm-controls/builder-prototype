@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* React Flow Custom Styles */
+.react-flow__node {
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.react-flow__handle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #555;
+}
+
+.react-flow__edge-path {
+  stroke: #888;
+  stroke-width: 2;
+}
+
+/* Node type specific styles */
+.react-flow__node-chatInput {
+  background-color: #e6f7ff;
+  border-color: #91d5ff;
+}
+
+.react-flow__node-chatOutput {
+  background-color: #f6ffed;
+  border-color: #b7eb8f;
+}
+
+.react-flow__node-llm {
+  background-color: #fff7e6;
+  border-color: #ffd591;
+}
+
+.react-flow__node-prompt {
+  background-color: #f9f0ff;
+  border-color: #d3adf7;
+}
